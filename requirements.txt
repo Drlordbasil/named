@@ -1,0 +1,14 @@
+The package requirements for this Python program are as follows:
+
+- nltk
+- googletrans
+- speech_recognition
+- pyttsx3
+
+You can install these packages using pip by running the following command:
+
+```
+pip install nltk googletrans speechrecognition pyttsx3
+```
+
+Note: It is recommended to create a virtual environment before installing these packages to keep your project dependencies isolated.
