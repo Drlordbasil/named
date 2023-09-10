@@ -18,6 +18,8 @@ import speech_recognition as sr
 import pyttsx3
 
 # Language detection function
+
+
 def detect_language(text):
     languages = {'af': 'Afrikaans', 'sq': 'Albanian', 'am': 'Amharic', 'ar': 'Arabic', 'hy': 'Armenian',
                  'az': 'Azerbaijani', 'eu': 'Basque', 'be': 'Belarusian', 'bn': 'Bengali', 'bs': 'Bosnian',
@@ -46,13 +48,18 @@ def detect_language(text):
     return detected_language
 
 # Text-to-text translation function
+
+
 def text_to_text_translation(text, source_language, target_language):
     translator = Translator(service_urls=['translate.google.com'])
-    translation = translator.translate(text, src=source_language, dest=target_language)
+    translation = translator.translate(
+        text, src=source_language, dest=target_language)
 
     return translation.text
 
 # Speech-to-text translation function
+
+
 def speech_to_text_translation():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
@@ -69,6 +76,8 @@ def speech_to_text_translation():
         print(f"Request to Google Speech Recognition service failed: {e}")
 
 # Text-to-speech output function
+
+
 def text_to_speech_output(text):
     engine = pyttsx3.init()
     engine.setProperty('rate', 150)
@@ -77,6 +86,8 @@ def text_to_speech_output(text):
     engine.runAndWait()
 
 # Language translation UI
+
+
 def translate():
     print("****************************************************")
     print("Welcome to the AI-powered Language Translator!")
@@ -94,10 +105,12 @@ def translate():
             source_language = detect_language(source_text)
             target_language = input("Enter the target language: ")
 
-            translated_text = text_to_text_translation(source_text, source_language, target_language)
+            translated_text = text_to_text_translation(
+                source_text, source_language, target_language)
             print(f"\nTranslated text ({target_language}): {translated_text}")
 
-            text_to_speech = input("\nWould you like to hear the translation? (yes/no): ")
+            text_to_speech = input(
+                "\nWould you like to hear the translation? (yes/no): ")
             if text_to_speech.lower() == "yes":
                 text_to_speech_output(translated_text)
         elif option == "2":
@@ -108,10 +121,13 @@ def translate():
                 source_language = detect_language(source_text)
                 target_language = input("Enter the target language: ")
 
-                translated_text = text_to_text_translation(source_text, source_language, target_language)
-                print(f"\nTranslated text ({target_language}): {translated_text}")
+                translated_text = text_to_text_translation(
+                    source_text, source_language, target_language)
+                print(
+                    f"\nTranslated text ({target_language}): {translated_text}")
 
-                text_to_speech = input("\nWould you like to hear the translation? (yes/no): ")
+                text_to_speech = input(
+                    "\nWould you like to hear the translation? (yes/no): ")
                 if text_to_speech.lower() == "yes":
                     text_to_speech_output(translated_text)
         elif option == "3":
@@ -119,6 +135,7 @@ def translate():
             break
         else:
             print("\nInvalid option. Please try again.\n")
+
 
 # Main program
 if __name__ == "__main__":
